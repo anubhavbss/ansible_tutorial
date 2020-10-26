@@ -1,4 +1,4 @@
----
+----
 
 - hosts: all
   become: true
@@ -7,7 +7,7 @@
          yum:
            update_cache: yes
      - name: stopped web server
-         service:
+       service:
            name: httpd
            state: stopped
      - name: install the apache2 package

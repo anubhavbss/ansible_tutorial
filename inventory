@@ -1,2 +1,9 @@
-192.168.178.38
+# Web Servers and Database server
+
+[web_servers]
+192.168.178.38 
 192.168.178.42
+
+[database_server]
+192.168.178.43
+192.169.178.44 

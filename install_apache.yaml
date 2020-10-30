@@ -14,9 +14,11 @@
        when: ansible_distribution == "Ubuntu"
 
 
-     - name: install the httpd package on CentOS pkg
+     - name: install the httpd and php packages on CentOS pkg
        yum:
-          name: httpd
+          name:
+            - httpd
+            - php 
           state: latest
        when: ansible_distribution == "CentOS"
 
@@ -26,20 +28,13 @@
          state: started  
        when: ansible_distribution == "CentOS"
 
-     - name: add php support for httpd
-       yum:
-         name: php
-         state: latest
-       when: ansible_distribution == "CentOS"
-
      - name: install the apache2 package on Ubuntu
        apt:
-         name: apache2
+         name: 
+           - apache2
+           - libapache2-mod-php 
          state: latest        
        when: ansible_distribution == "Ubuntu"
 
-     - name: add php support for apache2
-       apt:
-         name: libapache2-mod-php
-         state: latest
-       when: ansible_distribution == "Ubuntu"     
+    
+                

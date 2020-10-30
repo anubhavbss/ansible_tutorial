@@ -1,20 +1,19 @@
-----
+---
 
 - hosts: all
   become: true
   tasks:
-     - name: update repository index
-         yum:
+    - name: stopped web server
+        service: httpd
+        state: stopped
+    - name: update repository index
+        yum:
            update_cache: yes
-     - name: stopped web server
-       service:
-           name: httpd
-           state: stopped
-     - name: install the apache2 package
-         yum:
-           name: httpd
-           state: absent
-     - name: add php support for httpd
-         yum:
-           name: php-pear, php-pdo
-           state: absent       
+    - name: install the apache2 package
+        yum:
+          name: httpd
+          state: absent
+    - name: add php support for httpd
+        yum:
+          name: php-pear, php-pdo
+          state: absent       

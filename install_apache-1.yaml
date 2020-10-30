@@ -1,16 +1,18 @@
 ---
 
+---
+
 - hosts: all
   become: true
   tasks:
      
-   - name: install the httpd and php packages on CentOS pkg
-       yum:
-         name:
-           - httpd
-           - php 
-         state: latest
-         update_cache: yes
+     - name: install the httpd and php packages on CentOS pkg
+        yum:
+          name:
+            - httpd
+            - php 
+          state: latest
+          update_cache: yes
        when: ansible_distribution == "CentOS"
 
      - name: start httpd web server
@@ -27,6 +29,4 @@
          state: latest     
          update_cache: yes   
        when: ansible_distribution == "Ubuntu"
-
-    
                 

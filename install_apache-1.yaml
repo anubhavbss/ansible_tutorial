@@ -4,7 +4,7 @@
   become: true
   tasks:
      
-   - name: install the httpd and php packages on CentOS pkg
+     - name: install the httpd and php packages on CentOS pkg
        yum:
          name:
            - httpd

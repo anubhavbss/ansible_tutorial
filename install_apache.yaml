@@ -6,13 +6,20 @@
      - name: update repository index
        yum:
          update_cache: yes
+       when: ansible_distribution == "CentOS"
+
+    - name: update repository index for Ubuntu
+      apt:
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
 
 
-     - name: install the apache2 package on CentOS pkg
+     - name: install the httpd package on CentOS pkg
        yum:
           name: httpd
           state: latest
        when: ansible_distribution == "CentOS"
+
      - name: start httpd web server
        service:
          name: httpd
@@ -29,4 +36,10 @@
        apt:
          name: apache2
          state: latest        
-       when: ansible_distribution == "Ubuntu"   
+       when: ansible_distribution == "Ubuntu"
+
+     - name: add php support for apache2
+       apt:
+         name: libapache2-mod-php
+         state: latest
+       when: ansible_distribution == "Ubuntu"     
